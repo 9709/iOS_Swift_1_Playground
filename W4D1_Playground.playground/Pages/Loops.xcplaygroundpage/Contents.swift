@@ -29,19 +29,36 @@ for i in 2...5 {
  - Experiment:
  What's the difference between `2...5` vs `2..<5`?
  */
+for x in 10...15
+{
+    print("My Current Index: \(x)")
+}
+for y in 10..<15
+{
+    print("My Current Index: \(y)")
 
-
+}
 /*:
  - Experiment:
   Use a ranged for loop to search through the 'pets' array above for the word 'pig' and print out its index.
  */
+for index in 0..<pets.count {
+    let pet = pets[index]
+    if (pet == "pig"){
+        print("\(index)")
+    }
+}
 
-
+pets.firstIndex(of: "pig")
 /*:
  - Experiment:
  Create an array of random numbers of your choosing then make a for loop that adds 1 to each number.
  */
-
+var arrayNum = [1, 3, 4, 10]
+for numbers in 0..<arrayNum.count {
+    let newNumber = arrayNum[numbers]
+    print("\(newNumber+1)")
+}
 
 /*:
  - Experiment:
@@ -58,15 +75,19 @@ let interestingNumbers = [
     "Square": [1, 4, 9, 16, 25],
 ]
 var largest = 0
+var smallest = 25
 for (_, numbers) in interestingNumbers {
     for number in numbers {
         if number > largest {
             largest = number
         }
+        if number < smallest {
+            smallest = number
+        }
     }
 }
 print(largest)
-
+print(smallest)
 
 /*:
  - Callout(Challenge):

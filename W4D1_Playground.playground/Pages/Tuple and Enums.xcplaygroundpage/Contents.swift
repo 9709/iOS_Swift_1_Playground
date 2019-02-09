@@ -42,7 +42,8 @@ let interestingNumbers = [
     "Square": [1, 4, 9, 16, 25],
 ]
 for (kind, numbers) in interestingNumbers {
-    
+    print("\(kind)")
+    print("\(numbers)")
 }
 
 /*:
@@ -67,20 +68,58 @@ enum Months: Int{
     case Feburary
     case March
     case April
-    case May, June, July, August
+    case May
+    case June
+    case July
+    case August
+    case September
+    case October
+    case November
+    case December
     //...
     
     func abbreviatedStringForm() -> String {
         switch self {
-            default:
-                return ""
+        case .January:
+            return "Jan"
+        case .Feburary:
+            return "Feb"
+        case .March:
+            return "Mar"
+        case .April:
+            return "Apr"
+        case .May:
+            return "May"
+        case .June:
+            return "Jun"
+        case .July:
+            return "Jul"
+        case .August:
+            return "Aug"
+        case .September:
+            return "Sep"
+        case .October:
+            return "Oct"
+        case .November:
+            return "Nov"
+        case .December:
+            return "Dec"
         }
     }
 }
 
 //: Now we can represents the months in our program with easy readiablity and minimal mistakes.
 let januaryMonth = Months.January
+let februaryMonth = Months.Feburary
 let marchMonth = Months.March
+let aprilMonth = Months.April
+let mayMonth = Months.May
+let juneMonth = Months.June
+let julyMonth = Months.July
+let augustMonth = Months.August
+let setpemberMonth = Months.September
+let novemberMonth = Months.November
+let decemberMonth = Months.December
 
 /*:
  - Experiment:
@@ -88,20 +127,35 @@ let marchMonth = Months.March
  \
 Try removing the '= 1' from the Months enum. Now what is different?
  */
-
+//removing "=1" causes rawValue to display index value
 
 /*:
  - Experiment:
  Finish the rest of the months for our `Months` enum. Then take a look at `abbreviatedStringForm()` function. Complete this function so that it returns the abbreviated form of the desired month as a String. ie: calling `Months.January.abbreviatedStringForm()` returns "Jan".
  */
-
+let jan = Months.January.abbreviatedStringForm()
+let feb = Months.Feburary.abbreviatedStringForm()
+let mar = Months.March.abbreviatedStringForm()
+let apr = Months.April.abbreviatedStringForm()
+let may = Months.May.abbreviatedStringForm()
+let jun = Months.June.abbreviatedStringForm()
+let jul = Months.July.abbreviatedStringForm()
+let aug = Months.August.abbreviatedStringForm()
+let sep = Months.September.abbreviatedStringForm()
+let oct = Months.October.abbreviatedStringForm()
+let nov = Months.November.abbreviatedStringForm()
+let dec = Months.December.abbreviatedStringForm()
 
 /*:
  - Experiment:
  Write a function within the enum that compares two months and determines how many months are they apart. For example: Comparing January to March would return to me '2', because January and March are two months apart.
  */
+func comparingMonths(month1: Months, month2: Months) -> Int {
+    let diff = month2.rawValue - month1.rawValue
+    return diff
+}
 
-
+comparingMonths(month1: januaryMonth, month2: decemberMonth)
 /*:
  - Callout(Challenge):
  Create enums for the game "Rock, Paper, Scissors". Create a function within the enum that compares two hand shapes and determines the winner. Then create a function that returns ✋ , ✌️, or 👊 given rock, paper, or scissors.

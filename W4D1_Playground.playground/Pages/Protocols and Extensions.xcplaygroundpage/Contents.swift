@@ -8,6 +8,7 @@
  */
 protocol ShapeProtocol {
     var numberOfSides: Int { get set }
+    var colorOfShape: String { get set }
     func shapeDescription()
 }
 
@@ -16,9 +17,11 @@ protocol ShapeProtocol {
  */
 class Square: ShapeProtocol {
     var numberOfSides: Int
+    var colorOfShape: String
     
     init(){
         self.numberOfSides = 4
+        self.colorOfShape = "black"
     }
     
     func shapeDescription() {
@@ -31,22 +34,42 @@ class Square: ShapeProtocol {
  - Experiment:
  Add a new function in our 'ShapeProtocol' that should calculate the area of its shape. Make sure you implement it in our 'Square' class as well.
  */
-
+func areaOfShape(with lenght: Int, width: Int) -> Int {
+    let area = lenght*width
+    return area
+}
 /*:
  - Experiment:
  Add a new property in our 'ShapeProtocol' of type String that indicates the colour of this shape.
  */
 
 /*:
- - Experiment:
- We can also declare a custom initializer within our 'ShapeProtocol' that any class must have present. Create an initializer that takes in a colour as a parameter.
- */
-
-/*:
  - Callout(Challenge):
  Define a person protocol with name, gender, age and add a custom initializer to set all the properties and a function to print a description of this person. Create a 'Student' class that conforms to this protocol and print the description of this student using its name.
  */
+protocol Person {
+    var name: String { get set }
+    var gender: String { get set }
+    var age: Int { get set }
+    
+    func describePerson()
+}
 
+class Student: Person {
+    var name: String
+    var gender: String
+    var age: Int
+    
+    init() {
+        self.name = "Jane"
+        self.gender = "F"
+        self.age = 21
+    }
+    
+    func describePerson() {
+        print(name, gender, age)
+    }
+}
 /*:
  ## Extensions
  Extensions are a way to add additional functions to an existing class, struct or enum.
@@ -74,15 +97,29 @@ var mySquaredDoubleValue = myDoubleValue.square()
  - Experiment:
  Try adding the 'square' function to the `Float` type
  */
-
+//var floatValue: Float = 10.0
+//var squaredFloatValue = floatValue.square()
 /*:
  We are going to add a few extensions to several classes that you could potentially use for your future projects to make things more convenient.
  */
-/*:
- - Callout(Challenge):
- Create an extension on UIColor that converts hex represented colours to a UIColor to use. ex: #FFFFFF would give a UIColor of white (Hint: You can google the algorithm on how to convert hex values to a UIColor)
- */
 
+//extension UIColor {
+//    convenience init(red: Int, green: Int, blue: Int) {
+//        assert(red >= 0 && red <= 255, "Invalid red component")
+//        assert(green >= 0 && green <= 255, "Invalid green component")
+//        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+//
+//        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+//    }
+//
+//    convenience init(rgb: Int) {
+//        self.init(
+//            red: (rgb >> 16) & 0xFF,
+//            green: (rgb >> 8) & 0xFF,
+//            blue: rgb & 0xFF
+//        )
+//    }
+//}
 /*:
  - Callout(Challenge):
  Create an extension on `String` called 'trim'. This will return a `String` that has the whitespace trimmed from the beginning and end. For example: "    hello there  " will return "hellothere"

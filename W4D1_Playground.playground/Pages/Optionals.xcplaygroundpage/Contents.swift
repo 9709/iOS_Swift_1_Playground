@@ -19,14 +19,14 @@ var doubleNumberValue: Double? = nil
  - Experiment:
  Declare a non-optional variable of a `String` and set it to `nil`. What happens?
  */
-
-
+var nilString:String? = nil
+// Nil cannot initialize specified type 'String'
 /*:
  - Experiment:
  Declare an optional variable of a type `String` and set an initial `String` value to it. Then set it to `nil` on the next line. Does this work? Why or why not?
  */
-
-
+var testStr:String? = "apple"
+testStr = nil
 /*:
  Let's consider multiplying two numbers together that are of different types. Since we have a `Double` and an `Int`, we need to convert the two numbers to the same type. For example, creating a new `Double` using an `Int`.
  */
@@ -47,13 +47,16 @@ ratio * convertIntegerValue // now this works!
  - Experiment:
  Declare a `String` containing digits and try converting it to a `Double` the same way shown in the above example. What do you notice about the variable type? Hint: Use 'Option' + Mouse Click on the variable to see the type
  */
-
-
+var strForm = "52"
+var firstInt = 10.5
+var strToDouble = Double(strForm)
+strToDouble! * firstInt
+// strToDouble is an Optional
 /*:
  - Experiment:
  With your newly converted `Double` from a `String`, try multiplying it with the 'ratio' variable. What happens?
  */
-
+ratio * strToDouble!
 
 /*:
  Your newly converted `Double` value is a `Double?` which indicates we might have a double or we might have nothing.  Converting a `String` to a `Double` might fail because the `String` does not guarantee there will only be digits within it.
@@ -77,14 +80,14 @@ print("\(myOptionalDouble!)")
   - Experiment:
  Now you try! Try printing out your converted `Double?` with a force unwrap
 */
-
+print("\(strToDouble!)")
 
 
 /*:
  - Experiment:
  Go back and change your `String` to something that has no digits. What happens and why?
  */
-
+// crashes
 
 
 /*:
@@ -92,14 +95,14 @@ print("\(myOptionalDouble!)")
  Declare an optional variable of a type `String` and set an initial `String` value to it. Try printing it.
  Now print it again, but this time unwrap the optional variable using the `'!'`. What's different about the two lines you printed?
  */
-
-
+var optionalStr:String? = "something here"
+print("\(optionalStr!)")
 /*:
  - Experiment:
  Try setting an optional `String` variable to a non-optional `String` variable. What happens? What can you do to prevent the compiler from throwing an error?
  */
-
-
+var nonOptional:String = "nonoptional"
+var optional:String? = nonOptional
 /*:
  The next way to deal with optionals is called `"Conditional unwrapping"` or sometimes casually called an `"if-let"`. It's **much** safer, and won't break your Playground, or any of your code.
  
@@ -121,18 +124,27 @@ if let unwrapped = gravityConstant {
  - Experiment:
  Try changing `gravityConstant` to nil. What happens?
  */
-
-
+//gravityConstant = nil
+// Cannot assign to value: 'gravityConstant' is a 'let' constant
 /*:
  - Experiment:
  Create an array with containing elements of any type of your choice. Try experimenting with the array methods `'first'` and `'last'` to find out what they do. You'll see that both return optional values. Print out the values of first and last by using conditional unwrapping.
  */
-
+let array = [12.1, 30.1, 26]
+if let firstUnwrap = array.first
+{
+    print("\(firstUnwrap)")
+}
+else
+{
+    print("not unwrapped")
+}
 
 /*:
  - Experiment:
  Using the same array, experiment with the array method `'indexOf'` and find out what it does. Print out the value using conditional unwrapping.
  */
+
 
 
 /*:

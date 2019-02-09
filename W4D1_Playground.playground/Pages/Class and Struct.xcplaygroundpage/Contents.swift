@@ -30,14 +30,20 @@ struct ShapeStruct {
  - Experiment:
  Update the ShapeClass and add a new property 'name'. Also, update the description method to include the name when it prints.
  */
-
-
+class DetailedShapeClass: ShapeClass {
+    var shape = "Circle"
+    override func description() -> String {
+        return "\(shape) has \(numberOfSides) sides."
+    }
+}
 /*:
  - Experiment:
  Try creating an instance of the ShapeClass. We can do this by writing the class name then putting parentheses '()' after the class name. Assign it to a declared variable and try setting the variables 'numberofSides' and 'name' and calling the 'description' method.
  */
-
-
+var details = DetailedShapeClass()
+details.shape = "Square"
+details.numberOfSides = 4
+details.description()
 /*:
  Our ShapeClass is looking good but it is missing something important. We need an initializer to set up the class when an instance is created. We are going to create another class very similar to ShapeClass but this time, we will add the initializer.
  */
@@ -59,8 +65,22 @@ class NamedShapeClass {
  - Experiment:
  Add another initializer to our 'NamedShapeClass'. Have this initializer take in 'name' and 'numberOfSides' as its parameters. Then test it out by creating an instance of 'NamedShapeClass'.
  */
+class NewNamedShapeClass {
+    var numberOfSides: Int
+    var name: String
+    init(name: String, numberOfSides: Int) {
+        self.name = name
+        self.numberOfSides = numberOfSides
+    }
+    
+    func description() -> String {
+        return "A \(name) has \(numberOfSides) sides."
+    }
+}
 
+var new = NewNamedShapeClass(name: "Pentagon", numberOfSides: 5)
 
+new.description()
 /*:
  - Callout(Challenge):
  Let's make a new class named 'Square' and we will subclass 'NamedShapeClass'. This is already done for you below to showcase how to subclass.

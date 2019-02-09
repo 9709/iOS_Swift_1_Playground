@@ -42,23 +42,31 @@ func sayHello(toPerson: String) -> String{
  - Experiment:
  Try calling all of the functions above. They all have the same function name, but the compiler doesn't complain. Can you think of why this might be?
  */
-
+let name:String = "Michael"
+sayHello(toPerson: name) as String
 /*:
  - Experiment:
  Try creating your own function that accepts two parameters of any type you choose. Have the function print out the two parameters and test your function.
  */
+func introduction(name: String, age: Int) -> String {
+    return "My name is \(name), and I am \(age) years old."
+}
 
-/*:
- - Callout(Challenge):
- Create four separate functions to add, subtract, multiple, and divide with two parameters given to it and returns a number result. Try testing each one afterwards.
- 
- */
-
+introduction(name: "Michael", age: 10) as String
 /*:
  - Callout(Challenge):
  Create your own 'reverse' function that takes in an array of Int, reverses the order of the array, and returns the newly reversed array of Int. The array class has its own 'reverse' method, but do not use it for this challenge.
  */
+func reverseArray (array: [Int]) -> [Int] {
+    var newArray = [Int]()
+    for numberIndex in 0..<array.count {
+        newArray.append(array[(array.count-1) - numberIndex])
+    }
+    return newArray
+}
 
+let numberArray = [2,4,6,8,10]
+reverseArray(array: numberArray)
 /*:
  ## Closures
  
@@ -117,19 +125,38 @@ var sayHelloClosureWithReturn = { (name: String) -> String in
  - Experiment:
  Try calling all of the closures above. What do you notice that is different from calling a function?
  */
-
+sayHelloClosure()
+sayHelloClosureToPerson("Michael")
+sayHelloClosureWithReturn("Michael")
 /*:
  - Experiment:
  Try creating your own closure that accepts two parameters of any type you choose. Have the closure print out the two parameters and test your closure.
  */
+var sayGoodByePrint = { (name: String) -> () in
+    print("Goodbye \(name)")
+}
 
+sayGoodByePrint("John")
 /*:
  - Experiment:
  Declare a variable with an explicit closure type: `(String) -> (String)`. This closure type says it takes one parameter of type String and returns a variable of type String.
  */
+var sayGoodByeWithReturn = { (name:String) -> (String) in
+    return "Goodbye \(name)"
+}
 
+sayGoodByeWithReturn("John")
 /*:
  - Callout(Challenge):
  Create a closure with at least two parameters of your choice and decide whether or not it returns anything. Then create a function that takes in your closure as a parameter and one additional parameter of your choice.
  */
 //: [Next](@next)
+var testClosureWithReturn = { (name: String, age: Int) -> (String) in
+    return "\(name) is \(age) years old."
+}
+
+func greeting(introduction: String) -> String {
+    return "Goodmorning, \(introduction)"
+}
+
+greeting(introduction: testClosureWithReturn("John", 15)) as String

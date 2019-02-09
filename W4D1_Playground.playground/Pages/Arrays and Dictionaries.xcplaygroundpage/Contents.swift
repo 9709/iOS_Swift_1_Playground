@@ -19,31 +19,29 @@ myDictionary["Principal"] = 1
  - Experiment:
  Try creating an array and dictionary using `'let'` vs `'var'` then try adding something to them. What do you notice? For the array, you can use a method called 'append' to add something to it.
  */
+var numberArray = [1,2,3,4,5]
+numberArray.append(2)
+print("The value at index 5 is: \(numberArray[5])")
+
+var dictionary = ["Home": 1, "School": 2]
+dictionary["Hotel"] = 3
+let answer = dictionary["Hotel"]
+print("Hotel is linked to selection \(dictionary["Hotel"]  ?? 0)")
+
+
 
 
 /*:
  - Experiment:
  Try creating an empty array with an explicit type `[type]`. What happens when you add a value that isn't the same type?
  */
-
-
+var strArray:[String] = ["apple", "tree"]
+//Cannot convert value of type 'Int' to expected element type 'String'
 /*:
  - Experiment:
  Try creating an empty dictionary with an explicit type. `[keyType: valueType]`
  */
-
-
-/*:
- - Experiment:
- Create an array with any values of your choice. Play around with accessing a value at a certain index. Then try playing with the following methods of an array and find out what they do:
- - append
- - insert
- - removeAt
- - removeAll
- - reverse
- - count
- */
-
+var dict: [String:Int] = [:]
 
 /*:
  - Experiment:
@@ -52,7 +50,12 @@ myDictionary["Principal"] = 1
  - isEmpty
  - count
  */
-
+var testDict = ["Apple":"Tree", "Super":"Car", "Speed":"Boat"]
+print("\(testDict["Super"] ?? "Not in list")")
+testDict.removeValue(forKey: "Apple")
+print("\(testDict)")
+testDict.isEmpty
+testDict.count
 
 /*:
  - Callout(Challenge):
@@ -60,6 +63,8 @@ myDictionary["Principal"] = 1
  
     Finally, print out each person's name from the array using their index and string interpolation
 */
+var strNames = ["John", "Karen", "Jane"]
+print("\(strNames[0]), \(strNames[1]), \(strNames[2])")
 
 
 /*:
@@ -74,6 +79,10 @@ myDictionary["Principal"] = 1
  
     On the next line, add this last person's info: Bob - $45000
  */
-
-
+var salary = ["John":50000, "Jane":70000, "Karen":62000]
+print("John makes $\(salary["John"] ?? 0) per year")
+print("Jane makes $\(salary["Jane"] ?? 0) per year")
+print("Karen makes $\(salary["Karen"] ?? 0) per year")
+salary ["Bob"] = 45000
+print("Bob makes $\(salary["Bob"] ?? 0) per year")
 //: [Next](@next)
